@@ -1,0 +1,353 @@
+.checklist-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* Header */
+.checklist-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 24px;
+}
+
+.header-badge {
+  display: inline-block;
+  background: linear-gradient(90deg,var(--brand),var(--accent));
+  color: white;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+.checklist-header h1 {
+  font-size: 2.5rem;
+  color: #111827;
+  margin: 12px 0;
+  font-weight: 700;
+}
+
+.checklist-header p {
+  color: #666;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+/* Overall Progress */
+.overall-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: var(--card-bg);
+  padding: 22px;
+  border-radius: var(--radius);
+  margin-bottom: 32px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.progress-container {
+  flex: 1;
+  min-width: 0;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed 0%, #ff0066 100%);
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.reset-all-btn {
+  background: white;
+  border: 2px solid #e0e0e0;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.reset-all-btn:hover {
+  border-color: #ff0066;
+  color: #ff0066;
+  background: #fff5fa;
+}
+
+/* Checklist Container */
+.checklist-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* Checklist Section */
+.checklist-section {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 20px;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.checklist-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 16px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.section-icon {
+  font-size: 1.8rem;
+}
+
+.section-title h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #111827;
+  font-weight: 700;
+  overflow-wrap: break-word;
+}
+
+.progress-badge {
+  background: linear-gradient(90deg,var(--brand),var(--accent));
+  color: white;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* Checklist Items */
+.checklist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  user-select: none;
+  align-items: center;
+}
+
+.checklist-item:hover {
+  background-color: rgba(124,58,237,0.04);
+}
+
+.checkbox-input {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  background: white;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.checklist-item:hover .checkbox-custom {
+  border-color: #ff0066;
+}
+
+.checkbox-input:checked + .checkbox-custom {
+  background: linear-gradient(90deg,var(--brand),var(--accent));
+  border-color: var(--accent);
+  color: white;
+}
+
+.item-text {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.4;
+  word-break: break-word;
+  min-width: 0;
+  transition: all 0.2s;
+}
+
+.item-text.completed {
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* Pro Tip */
+.pro-tip {
+  background: linear-gradient(135deg, #fff8dc 0%, #fff9e6 100%);
+  border-left: 4px solid #ffc107;
+  border-radius: 8px;
+  padding: 18px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  border: 1px solid rgba(255, 193, 7, 0.12);
+}
+
+.pro-tip-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.pro-tip-content {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+.pro-tip-content strong {
+  color: #ff9800;
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .checklist-wrapper {
+    padding: 16px 12px;
+  }
+
+  .checklist-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .checklist-header p {
+    font-size: 0.95rem;
+  }
+
+  .overall-progress {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .reset-all-btn {
+    width: 100%;
+  }
+
+  .checklist-container {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .progress-badge {
+    align-self: flex-start;
+  }
+
+  .pro-tip {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .checklist-wrapper {
+    padding: 12px 0;
+  }
+
+  .checklist-header {
+    margin-bottom: 30px;
+    padding: 12px 0;
+  }
+
+  .checklist-header h1 {
+    font-size: 1.65rem;
+  }
+
+  .overall-progress,
+  .checklist-section {
+    padding: 18px;
+  }
+
+  .checklist-container {
+    gap: 18px;
+  }
+
+  .section-header {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .checklist-item {
+    padding: 10px;
+  }
+
+  .pro-tip {
+    gap: 10px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .overall-progress,
+  .checklist-section {
+    padding: 16px 14px;
+  }
+
+  .section-icon {
+    font-size: 1.5rem;
+  }
+
+  .section-title h3 {
+    font-size: 1.05rem;
+  }
+
+  .progress-badge {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+  }
+}
