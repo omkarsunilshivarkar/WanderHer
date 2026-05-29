@@ -14,6 +14,17 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+
+  useEffect(() => {
     const onHashChange = () => {
       const sectionId = window.location.hash.replace('#', '')
       if (sectionId) {
@@ -71,18 +82,23 @@ export default function Navbar() {
           className={`nav-toggle ${open ? 'open' : ''}`}
           onClick={() => setOpen((s) => !s)}
           aria-expanded={open}
+          aria-controls="primary-navigation"
           aria-label="Toggle navigation"
+          type="button"
         >
           <span className={`hamburger ${open ? 'open' : ''}`}></span>
         </button>
 
-        <ul className={`nav-tabs ${open ? 'open' : ''}`}>
+        <ul id="primary-navigation" className={`nav-tabs ${open ? 'open' : ''}`}>
           {navItems.map((item) => (
             <li key={item.id}>
               <a
                 className={`nav-tab ${activeSection === item.id ? 'active' : ''}`}
                 href={`#${item.id}`}
-                onClick={() => setActiveSection(item.id)}
+                onClick={() => {
+                  setActiveSection(item.id)
+                  setOpen(false)
+                }}
               >
                 {item.label}
               </a>

@@ -63,11 +63,13 @@
     position: sticky;
   }
 
-  .nav-toggle {
+  .navbar .nav-toggle {
     display: inline-flex;
+    position: relative;
+    z-index: 1003;
   }
 
-  .nav-tabs {
+  .navbar .nav-tabs {
     display: none;
     position: fixed;
     left: 12px;
@@ -82,25 +84,25 @@
     gap: 8px;
     flex-wrap: nowrap;
     flex-grow: 0;
-    z-index: 1001;
+    z-index: 1002;
     box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
     max-height: calc(100vh - 90px);
     overflow-y: auto;
   }
 
-  .nav-tabs.open {
+  .navbar .nav-tabs.open {
     display: flex;
   }
 
-  .nav-tabs li {
+  .navbar .nav-tabs li {
     width: 100%;
   }
 
-  .navbar-container {
+  .navbar .navbar-container {
     position: static;
   }
 
-  .nav-tab {
+  .navbar .nav-tab {
     padding: 12px 10px;
     display: flex;
     align-items: center;
@@ -113,11 +115,11 @@
     white-space: normal;
   }
 
-  .nav-tab:hover {
+  .navbar .nav-tab:hover {
     background: rgba(124, 58, 237, 0.08);
   }
 
-  .nav-tab.active {
+  .navbar .nav-tab.active {
     background: rgba(124, 58, 237, 0.12);
     color: var(--brand);
   }
@@ -128,7 +130,7 @@
     inset: 64px 0 0 0;
   }
 
-  .nav-tabs {
+  .navbar .nav-tabs {
     left: 8px;
     right: 8px;
     top: 64px;
@@ -137,7 +139,7 @@
     max-height: calc(100vh - 78px);
   }
 
-  .nav-toggle {
+  .navbar .nav-toggle {
     width: 40px;
     height: 40px;
   }
