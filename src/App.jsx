@@ -31,11 +31,10 @@ function App() {
         <section id="home" className="app-shell home-section">
           <header className="hero">
             <div className="hero-copy">
-              <span className="eyebrow">Solo travel safety hub</span>
-              <h1>Explore the world with confidence beside you.</h1>
+              <span className="eyebrow">Travel Smarter. Travel Safer.</span>
+              <h1>Explore the World with Confidence.</h1>
               <p>
-                WanderHer brings emergency contacts, practical safety guidance, travel prep,
-                and packing essentials into one calm space for women travelers.
+                WanderHer brings personalized AI itineraries, real recommendations from women travelers, trusted accommodations, and much more—all in one app.
               </p>
               <div className="hero-actions">
                 <a className="primary-btn" href="#emergency">Get Help Fast</a>
@@ -43,7 +42,7 @@ function App() {
               </div>
               <div className="hero-highlights">
                 <a className="hero-chip" href="#emergency">
-                  <strong>Emergency Contacts</strong>
+                  <strong>Quick Help</strong>
                   <span>Fast access to helplines</span>
                 </a>
                 <a className="hero-chip" href="#safety-tips">
@@ -78,16 +77,6 @@ function App() {
               </div>
             </div>
           </header>
-
-          <section className="card-grid">
-            {featuredDestinations.map((destination) => (
-              <article key={destination.title} className="destination-card">
-                <span className="tag">{destination.tag}</span>
-                <h3>{destination.title}</h3>
-                <p>{destination.description}</p>
-              </article>
-            ))}
-          </section>
 
           <footer className="footer">
             <p>Built for women who love travel, freedom, and community.</p>

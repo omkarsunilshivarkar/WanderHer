@@ -119,7 +119,7 @@
 }
 
 .helpline-card {
-  background: linear-gradient(135deg, #422b6a 0%, #5a3a8a 100%);
+  background: linear-gradient(135deg, #6f5aa5 0%, #8b75bd 100%);
   border-radius: var(--radius);
   padding: 20px;
   color: white;
@@ -134,7 +134,7 @@
 
 .helpline-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(255, 0, 102, 0.2);
+  box-shadow: 0 8px 22px rgba(124, 58, 237, 0.22);
 }
 
 .helpline-icon {
@@ -150,13 +150,13 @@
   margin: 0;
   font-size: 1.05rem;
   font-weight: 700;
-  color: #ffd6ea;
+  color: #ffe2f0;
 }
 
 .helpline-desc {
   margin: 0;
   font-size: 0.9rem;
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.86);
   line-height: 1.4;
   flex-grow: 1;
   overflow-wrap: break-word;
@@ -210,7 +210,7 @@
 }
 
 .state-helpline-card {
-  background: linear-gradient(135deg, #4a3475 0%, #6b4b91 100%);
+  background: linear-gradient(135deg, #6f5aa5 0%, #8b75bd 100%);
   border-radius: var(--radius);
   padding: 20px;
   color: white;
@@ -225,7 +225,7 @@
 
 .state-helpline-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(255, 0, 102, 0.2);
+  box-shadow: 0 8px 22px rgba(124, 58, 237, 0.22);
 }
 
 .state-helpline-info {
@@ -242,7 +242,7 @@
 .state-helpline-info p {
   margin: 0 0 12px 0;
   font-size: 0.9rem;
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.86);
   overflow-wrap: break-word;
 }
 
@@ -291,7 +291,7 @@
 }
 
 .app-card {
-  background: linear-gradient(135deg, #4a3a7a 0%, #6a5a9a 100%);
+  background: linear-gradient(135deg, #6f5aa5 0%, #8b75bd 100%);
   border-radius: 12px;
   padding: 24px;
   text-align: center;
@@ -305,7 +305,7 @@
 
 .app-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(255, 0, 102, 0.25);
+  box-shadow: 0 8px 22px rgba(124, 58, 237, 0.22);
 }
 
 .app-icon {
@@ -323,7 +323,7 @@
 .app-card p {
   margin: 0;
   font-size: 0.9rem;
-  color: #ddd;
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.4;
   flex-grow: 1;
   overflow-wrap: break-word;
