@@ -6,6 +6,8 @@ const navItems = [
   { id: 'emergency', label: 'Emergency' },
   { id: 'safety-tips', label: 'Safety Tips' },
   { id: 'travel-tips', label: 'Travel Tips' },
+  { id: 'itinerary', label: 'Itinerary' },
+  { id: 'ai-planner', label: 'AI Planner' },
   { id: 'checklist', label: 'Checklist' }
 ]
 

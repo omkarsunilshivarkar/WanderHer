@@ -1,7 +1,10 @@
+import { useState, useEffect } from 'react'
 import EmergencyContacts from './components/EmergencyContacts'
 import Checklist from './components/Checklist'
 import SafetyTips from './components/SafetyTips'
 import TravelTips from './components/TravelTips'
+import Itinerary from './components/Itinerary'
+import AITripPlanner from './components/AITripPlanner'
 import Navbar from './components/Navbar'
 
 const featuredDestinations = [
@@ -93,6 +96,14 @@ function App() {
 
         <section id="travel-tips" className="section-block">
           <TravelTips />
+        </section>
+
+        <section id="itinerary" className="section-block">
+          <Itinerary />
+        </section>
+
+        <section id="ai-planner" className="section-block">
+          <AITripPlanner />
         </section>
 
         <section id="checklist" className="section-block">
