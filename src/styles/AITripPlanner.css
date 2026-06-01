@@ -151,6 +151,7 @@
     align-items: center;
     margin-bottom: 1rem;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .output-header h3 {
@@ -159,20 +160,57 @@
     font-size: 1.3rem;
 }
 
+.download-options {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.format-selector {
+    padding: 0.6rem 1rem;
+    background: white;
+    color: #2c3e50;
+    border: 2px solid #ecf0f1;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.format-selector:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+}
+
+.format-selector:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
 .download-btn {
     padding: 0.6rem 1.2rem;
-    background: #27ae60;
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
     white-space: nowrap;
+    font-size: 0.95rem;
 }
 
 .download-btn:hover {
-    background: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+}
+
+.download-btn:active {
+    transform: translateY(0);
 }
 
 .itinerary-text {
@@ -181,13 +219,75 @@
     background: white;
     padding: 1.5rem;
     border-radius: 8px;
-    line-height: 1.6;
+    line-height: 1.8;
     font-size: 0.95rem;
     color: #2c3e50;
 }
 
+/* Formatted Content Styling */
+.formatted-heading-2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #667eea;
+    margin: 1.5rem 0 0.75rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid #667eea;
+}
+
+.formatted-heading-3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #764ba2;
+    margin: 1.2rem 0 0.5rem 0;
+    padding-left: 0.5rem;
+    border-left: 4px solid #764ba2;
+}
+
+.formatted-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0;
+}
+
+.formatted-list li {
+    padding: 0.6rem 0 0.6rem 1.5rem;
+    position: relative;
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.formatted-list li:before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.formatted-list li strong {
+    color: #764ba2;
+    font-weight: 600;
+}
+
+.formatted-paragraph {
+    margin: 0.75rem 0;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.formatted-paragraph strong {
+    color: #764ba2;
+    font-weight: 600;
+}
+
+.spacing {
+    height: 0.5rem;
+}
+
 .itinerary-text p {
-    margin: 0.5rem 0;
+    margin: 0;
     word-wrap: break-word;
 }
 
@@ -255,6 +355,19 @@
     .output-header {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .download-options {
+        width: 100%;
+    }
+
+    .format-selector {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .download-btn {
+        white-space: normal;
     }
 
     .planner-container h2 {
