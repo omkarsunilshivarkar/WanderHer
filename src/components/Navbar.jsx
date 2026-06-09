@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 import '../styles/Navbar.css'
+import logo from '../wanderHer_logo.png'
 
 const navItems = [
   { id: 'home', label: 'Home' },
-  { id: 'emergency', label: 'Emergency' },
-  { id: 'safety-tips', label: 'Safety Tips' },
-  { id: 'travel-tips', label: 'Travel Tips' },
-  { id: 'itinerary', label: 'Itinerary' },
   { id: 'ai-planner', label: 'AI Planner' },
-  { id: 'checklist', label: 'Checklist' }
+  { id: 'itinerary', label: 'Itinerary' },
+  { id: 'checklist', label: 'Checklist' },
+  { id: 'tips', label: 'Tips' },
+  { id: 'emergency', label: 'Emergency' },
 ]
 
 export default function Navbar() {
@@ -75,8 +75,7 @@ export default function Navbar() {
       <div className="navbar-container">
         <div className="navbar-left">
           <div className="navbar-logo">
-            <span className="logo-icon">💎</span>
-            <span>WanderHer</span>
+            <img src={logo} alt="WanderHer Logo" className="logo-icon" />
           </div>
         </div>
 
