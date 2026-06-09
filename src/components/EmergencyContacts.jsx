@@ -26,18 +26,25 @@ function EmergencyContacts() {
     <div className="emergency-contacts">
       {/* Header Section */}
       <div className="emergency-header">
-        <div className="emergency-badge">🆘 IN EMERGENCY?</div>
+        <div className="emergency-badge">IN EMERGENCY ?</div>
         <h1>Emergency Contacts</h1>
         <p>Quick access to all essential helplines and safety resources across India</p>
       </div>
 
       {/* Danger Alert Section */}
       <section className="danger-alert">
-        <div className="alert-warning">⚠️</div>
-        <div className="alert-content">
-          <h2>In Immediate Danger?</h2>
-          <p>Call 112 - India's unified emergency number (equivalent to 911)</p>
-          <button className="danger-btn">☎️ Call 112 Now</button>
+        <div className="danger-left-section">
+          <div className="danger-icon">⚠️</div>
+          <div className="danger-content">
+            <h2>In Immediate Danger?</h2>
+            <p>India's unified emergency number</p>
+          </div>
+        </div>
+        <div className="danger-right-section">
+          <div className="danger-number">112</div>
+          <a href="tel:112" className="danger-btn-call">
+            <span>☎️</span>
+          </a>
         </div>
       </section>
 
@@ -46,19 +53,24 @@ function EmergencyContacts() {
         <h2>National Helplines</h2>
         <div className="helplines-grid">
           {nationalHelplines.map((helpline) => (
-            <div key={helpline.id} className="helpline-card">
-              <div className="helpline-icon">{helpline.icon}</div>
-              <div className="helpline-info">
-                <h3>{helpline.name}</h3>
-                <p className="helpline-desc">{helpline.description}</p>
-                <div className="helpline-number">{helpline.number}</div>
+            <div key={helpline.id} className="helpline-card-grid">
+              <div className="helpline-left-section">
+                <div className="helpline-content-grid">
+                  <h3 className="helpline-title-grid">{helpline.name}</h3>
+                </div>
               </div>
-              <button
-                className={`copy-btn ${copiedNumber === helpline.number ? 'copied' : ''}`}
-                onClick={() => handleCopy(helpline.number)}
-              >
-                {copiedNumber === helpline.number ? '✓ Copied' : 'Copy'}
-              </button>
+              <div className="helpline-actions-grid">
+                <div className="helpline-number-grid">
+                  {helpline.number}
+                </div>
+                <a
+                  href={`tel:${helpline.number}`}
+                  className="helpline-call-btn-grid"
+                  title={`Call ${helpline.number}`}
+                >
+                  <span className="call-icon">☎️</span>
+                </a>
+              </div>
             </div>
           ))}
         </div>
@@ -67,7 +79,7 @@ function EmergencyContacts() {
       {/* State-wise Helplines */}
       <section className="state-helplines">
         <h2>State-wise Helplines</h2>
-        
+
         <div className="state-selector">
           {Object.entries(stateNames).map(([key, name]) => (
             <button
@@ -83,17 +95,22 @@ function EmergencyContacts() {
         <div className="state-helplines-grid">
           {stateHelplines[selectedState]?.map((helpline, index) => (
             <div key={index} className="state-helpline-card">
-              <div className="state-helpline-info">
-                <h3>{helpline.name}</h3>
-                <p>{helpline.description}</p>
-                <div className="state-number">{helpline.number}</div>
+              <div className="helpline-left-section">
+                <h3 className="state-helpline-title">{helpline.name}</h3>
+                <p className="state-helpline-desc">{helpline.description}</p>
               </div>
-              <button
-                className={`copy-btn ${copiedNumber === helpline.number ? 'copied' : ''}`}
-                onClick={() => handleCopy(helpline.number)}
-              >
-                {copiedNumber === helpline.number ? '✓ Copied' : 'Copy'}
-              </button>
+              <div className="helpline-actions-grid">
+                <div className="helpline-number-grid">
+                  {helpline.number}
+                </div>
+                <a
+                  href={`tel:${helpline.number}`}
+                  className="helpline-call-btn-grid"
+                  title={`Call ${helpline.number}`}
+                >
+                  <span className="call-icon">☎️</span>
+                </a>
+              </div>
             </div>
           ))}
         </div>
@@ -105,15 +122,14 @@ function EmergencyContacts() {
         <div className="apps-grid">
           {safetyApps.map((app) => (
             <div key={app.id} className="app-card">
-              <div className="app-icon">{app.icon}</div>
-              <h3>{app.name}</h3>
-              <p>{app.description}</p>
+              <div className="app-left-section">
+                <div className="app-content">
+                  <h3 className="app-name">{app.name}</h3>
+                  <p className="app-desc">{app.description}</p>
+                </div>
+              </div>
               <div className="app-platforms">
-                {app.platforms.map((platform) => (
-                  <span key={platform} className="platform-badge">
-                    {platform}
-                  </span>
-                ))}
+                <div className="app-icon">{app.icon}</div>
               </div>
             </div>
           ))}

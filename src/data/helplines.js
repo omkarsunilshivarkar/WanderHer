@@ -1,52 +1,91 @@
 export const nationalHelplines = [
   {
-    id: 1,
-    name: 'Women Helpline',
-    number: '181',
-    description: 'National Commission for Women 24/7 helpline',
-    icon: '👩'
-  },
-  {
     id: 2,
-    name: 'Police Emergency',
+    name: 'Police',
     number: '100',
-    description: 'National emergency police helpline',
-    icon: '👮'
+    description: 'Request immediate assistance',
+    // icon: '🛡️',
+    serviceType: 'police',
+    borderColor: '#1E3A8A',
+    iconBgColor: '#E0E7FF',
+    buttonColor: '#2563EB'
   },
   {
     id: 3,
     name: 'Ambulance',
     number: '102',
-    description: 'Medical emergency ambulance service',
-    icon: '🚑'
+    description: 'Medical & paramedics dispatch',
+    icon: '🚑',
+    serviceType: 'ambulance',
+    borderColor: '#991B1B',
+    iconBgColor: '#FEE2E2',
+    buttonColor: '#DC2626'
+  },
+  {
+    id: 8,
+    name: 'Fire Station',
+    number: '101',
+    description: 'Fire and rescue emergencies',
+    icon: '🚒',
+    serviceType: 'fire',
+    borderColor: '#EA580C',
+    iconBgColor: '#FFEDD5',
+    buttonColor: '#EA580C'
+  },
+  {
+    id: 1,
+    name: 'Women Helpline',
+    number: '181',
+    description: 'National Commission for Women 24/7 helpline',
+    icon: '👩',
+    serviceType: 'women',
+    borderColor: '#7C3AED',
+    iconBgColor: '#F3E8FF',
+    buttonColor: '#A855F7'
   },
   {
     id: 4,
     name: 'Emergency Response',
     number: '112',
     description: 'Unified emergency number (like 911)',
-    icon: '📞'
+    icon: '📞',
+    serviceType: 'emergency',
+    borderColor: '#059669',
+    iconBgColor: '#ECFDF5',
+    buttonColor: '#10B981'
   },
   {
     id: 5,
     name: 'Railway Police',
     number: '182',
     description: 'Railway protection force helpline',
-    icon: '🚂'
+    icon: '🚂',
+    serviceType: 'railway',
+    borderColor: '#7C2D12',
+    iconBgColor: '#FEF3C7',
+    buttonColor: '#B45309'
   },
   {
     id: 6,
     name: 'Tourist Helpline',
     number: '1363',
     description: 'Tourist protection helpline',
-    icon: '🎫'
+    icon: '🎫',
+    serviceType: 'tourist',
+    borderColor: '#1E40AF',
+    iconBgColor: '#DBEAFE',
+    buttonColor: '#3B82F6'
   },
   {
     id: 7,
     name: 'Cyber Crime',
     number: '1930',
     description: 'National cyber crime helpline',
-    icon: '💻'
+    icon: '💻',
+    serviceType: 'cyber',
+    borderColor: '#6B21A8',
+    iconBgColor: '#FAF5FF',
+    buttonColor: '#D946EF'
   },
   {
     id: 8,
