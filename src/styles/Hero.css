@@ -1,0 +1,157 @@
+.hero-section {
+  background: transparent;
+  padding: 20px 20px 60px 20px;
+  min-height: 600px;
+}
+
+.hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 0 60px;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero-label {
+  color: #A9823A;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-size: 56px;
+  font-weight: 700;
+  color: #1a3a52;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.hero-description {
+  font-size: 16px;
+  color: #4B5563;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 500px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.btn {
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: #A9823A;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(201, 169, 97, 0.3);
+}
+
+.btn-primary:hover {
+  background: #A9823A;
+  box-shadow: 0 6px 16px rgba(201, 169, 97, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #1a3a52;
+  border: 2px solid #1a3a52;
+}
+
+.btn-secondary:hover {
+  background: #1a3a52;
+  color: #ffffff;
+}
+
+.hero-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 40px 20px;
+    min-height: auto;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-title {
+    font-size: 36px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 30px 16px;
+  }
+
+  .hero-container {
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-label {
+    font-size: 12px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}
