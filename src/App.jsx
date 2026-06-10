@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import EmergencyContacts from './components/EmergencyContacts'
 import Checklist from './components/Checklist'
 import SafetyTips from './components/SafetyTips'
@@ -7,6 +6,7 @@ import Itinerary from './components/Itinerary'
 import AITripPlanner from './components/AITripPlanner'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -15,27 +15,28 @@ function App() {
       <div className="page-content">
         <Hero />
 
-        <section id="emergency" className="section-block">
-          <EmergencyContacts />
-        </section>
-        
-        <section id="tips" className="section-block tips-section">
-          <SafetyTips />
-          <TravelTips />
+        <section id="ai-planner" className="section-block">
+          <AITripPlanner />
         </section>
 
         <section id="itinerary" className="section-block">
           <Itinerary />
         </section>
 
-        <section id="ai-planner" className="section-block">
-          <AITripPlanner />
-        </section>
-
         <section id="checklist" className="section-block">
           <Checklist />
         </section>
+
+        <section id="tips" className="section-block tips-section">
+          <SafetyTips />
+          <TravelTips />
+        </section>
+
+        <section id="emergency" className="section-block">
+          <EmergencyContacts />
+        </section>
       </div>
+      <Footer />
     </div>
   )
 }
