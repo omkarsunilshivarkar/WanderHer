@@ -279,8 +279,8 @@ Format the response clearly with headers and bullet points for easy reading. Use
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.8;
-            color: #2c3e50;
-            background: #f8f9fa;
+            color: #1a3a52;
+            background: #FFFBF7;
             padding: 20px;
         }
         
@@ -294,7 +294,7 @@ Format the response clearly with headers and bullet points for easy reading. Use
         }
         
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #A9823A;
             color: white;
             padding: 40px;
             text-align: center;
@@ -328,18 +328,18 @@ Format the response clearly with headers and bullet points for easy reading. Use
         
         h2 {
             font-size: 1.8rem;
-            color: #667eea;
+            color: #A9823A;
             margin: 30px 0 15px 0;
             padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid #A9823A;
         }
         
         h3 {
             font-size: 1.3rem;
-            color: #764ba2;
+            color: #8F6F31;
             margin: 20px 0 10px 0;
             padding-left: 15px;
-            border-left: 4px solid #764ba2;
+            border-left: 4px solid #A9823A;
         }
         
         p {
@@ -348,7 +348,7 @@ Format the response clearly with headers and bullet points for easy reading. Use
         }
         
         strong {
-            color: #764ba2;
+            color: #8F6F31;
             font-weight: 600;
         }
         
@@ -364,18 +364,18 @@ Format the response clearly with headers and bullet points for easy reading. Use
         
         li:before {
             content: '✓';
-            color: #667eea;
+            color: #A9823A;
             font-weight: bold;
             margin-right: 10px;
             margin-left: -25px;
         }
         
         .footer {
-            background: #f8f9fa;
+            background: #f5ede2;
             padding: 20px 40px;
-            border-top: 1px solid #ecf0f1;
+            border-top: 1px solid #f0e6d8;
             text-align: center;
-            color: #7f8c8d;
+            color: #4B5563;
             font-size: 0.9rem;
         }
         
@@ -486,7 +486,7 @@ Format the response clearly with headers and bullet points for easy reading. Use
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.8;
-            color: #2c3e50;
+            color: #1a3a52;
             padding: 0;
             background: white;
         }
@@ -499,7 +499,7 @@ Format the response clearly with headers and bullet points for easy reading. Use
         }
         
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #A9823A;
             color: white;
             padding: 50px 40px;
             text-align: center;
@@ -532,19 +532,19 @@ Format the response clearly with headers and bullet points for easy reading. Use
         
         h2 {
             font-size: 1.8rem;
-            color: #667eea;
+            color: #A9823A;
             margin: 35px 0 15px 0;
             padding-bottom: 12px;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid #A9823A;
             page-break-after: avoid;
         }
         
         h3 {
             font-size: 1.3rem;
-            color: #764ba2;
+            color: #8F6F31;
             margin: 20px 0 10px 0;
             padding-left: 12px;
-            border-left: 4px solid #764ba2;
+            border-left: 4px solid #A9823A;
             page-break-after: avoid;
         }
         
@@ -555,7 +555,7 @@ Format the response clearly with headers and bullet points for easy reading. Use
         }
         
         strong {
-            color: #764ba2;
+            color: #8F6F31;
             font-weight: 700;
         }
         
@@ -566,18 +566,18 @@ Format the response clearly with headers and bullet points for easy reading. Use
         
         .list-item:before {
             content: '✓ ';
-            color: #667eea;
+            color: #A9823A;
             font-weight: bold;
             margin-left: -25px;
             margin-right: 8px;
         }
         
         .footer {
-            background: #f8f9fa;
+            background: #f5ede2;
             padding: 30px 40px;
-            border-top: 2px solid #ecf0f1;
+            border-top: 2px solid #f0e6d8;
             text-align: center;
-            color: #7f8c8d;
+            color: #4B5563;
             font-size: 0.95rem;
             page-break-before: avoid;
         }
@@ -587,7 +587,7 @@ Format the response clearly with headers and bullet points for easy reading. Use
         }
         
         .download-button {
-            background: #27ae60;
+            background: #A9823A;
             color: white;
             padding: 12px 30px;
             border: none;
@@ -599,7 +599,7 @@ Format the response clearly with headers and bullet points for easy reading. Use
         }
         
         .download-button:hover {
-            background: #229954;
+            background: #8F6F31;
         }
         
         @media print {
@@ -724,25 +724,26 @@ Format the response clearly with headers and bullet points for easy reading. Use
     return (
         <div className="ai-trip-planner">
             <div className="planner-container">
-                <h2>🤖 AI Trip Planner</h2>
+                <h2>AI Trip Planner</h2>
                 <p className="subtitle">Get a personalized itinerary for your Indian adventure</p>
 
                 <div className="planner-content">
                     <form onSubmit={generateItinerary} className="planner-form">
-                        <div className="form-group">
-                            <label htmlFor="destination">Destination (Indian City/Town) *</label>
-                            <input
-                                type="text"
-                                id="destination"
-                                name="destination"
-                                placeholder="e.g., Jaipur, Goa, Darjeeling, Kerala"
-                                value={formData.destination}
-                                onChange={handleInputChange}
-                                required
-                            />
-                        </div>
+
 
                         <div className="form-row">
+                            <div className="form-group">
+                                <label htmlFor="destination">Destination *</label>
+                                <input
+                                    type="text"
+                                    id="destination"
+                                    name="destination"
+                                    placeholder="e.g., Jaipur, Goa, Darjeeling, Kerala"
+                                    value={formData.destination}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                            </div>
                             <div className="form-group">
                                 <label htmlFor="duration">Trip Duration (days) *</label>
                                 <input
@@ -773,38 +774,42 @@ Format the response clearly with headers and bullet points for easy reading. Use
                                     <option value="Luxury">Luxury (₹7,000+/day)</option>
                                 </select>
                             </div>
+
+                            <div className="form-group">
+                                <label htmlFor="travelStyle">Travel Style</label>
+                                <select
+                                    id="travelStyle"
+                                    name="travelStyle"
+                                    value={formData.travelStyle}
+                                    onChange={handleInputChange}
+                                >
+                                    <option value="relaxed">Relaxed</option>
+                                    <option value="moderate">Moderate</option>
+                                    <option value="adventurous">Adventurous</option>
+                                </select>
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="travelers">Traveling As *</label>
+                                <select
+                                    id="travelers"
+                                    name="travelers"
+                                    value={formData.travelers}
+                                    onChange={handleInputChange}
+                                    required
+                                >
+                                    <option value="">Select travel type</option>
+                                    <option value="Solo">Solo Traveler</option>
+                                    <option value="Couple">Couple</option>
+                                    <option value="Friends">Friends/Group</option>
+                                    <option value="Family">Family</option>
+                                </select>
+                            </div>
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="travelStyle">Travel Style</label>
-                            <select
-                                id="travelStyle"
-                                name="travelStyle"
-                                value={formData.travelStyle}
-                                onChange={handleInputChange}
-                            >
-                                <option value="relaxed">Relaxed</option>
-                                <option value="moderate">Moderate</option>
-                                <option value="adventurous">Adventurous</option>
-                            </select>
-                        </div>
 
-                        <div className="form-group">
-                            <label htmlFor="travelers">Traveling As *</label>
-                            <select
-                                id="travelers"
-                                name="travelers"
-                                value={formData.travelers}
-                                onChange={handleInputChange}
-                                required
-                            >
-                                <option value="">Select travel type</option>
-                                <option value="Solo">Solo Traveler</option>
-                                <option value="Couple">Couple</option>
-                                <option value="Friends">Friends/Group</option>
-                                <option value="Family">Family</option>
-                            </select>
-                        </div>
+
+
 
                         <div className="form-group">
                             <label>Interests (select multiple)</label>

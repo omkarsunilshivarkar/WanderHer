@@ -1,113 +1,125 @@
 .ai-trip-planner {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 3rem 1.5rem;
+    --planner-gold: #A9823A;
+    --planner-gold-hover: #8F6F31;
+
+    background: linear-gradient(135deg, #FFFBF7 0%, #fef5ed 100%);
+    padding: 24px 24px;
 }
 
 .planner-container {
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto;
     background: white;
-    border-radius: 16px;
-    padding: 3rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    border: 6px solid #A9823A
+;
+    padding: 1.75rem;
+    box-shadow: 0 8px 28px rgba(26, 58, 82, 0.08);
 }
 
 .planner-container h2 {
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    color: #1a3a52;
+    margin: 0 0 0.4rem;
     text-align: center;
+    font-weight: 700;
 }
 
 .subtitle {
     text-align: center;
-    color: #7f8c8d;
-    margin-bottom: 2rem;
+    color: #4B5563;
+    margin-bottom: 1.25rem;
     font-size: 1rem;
+    line-height: 1.45;
 }
 
 .planner-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    /* grid-template-columns: 1fr 1fr; */
+    gap: 1.5rem;
     align-items: start;
 }
 
 .planner-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    background: #f9fafb;
-    padding: 2rem;
-    border-radius: 12px;
+    gap: 1rem;
+    background: #FFFBF7;
+    padding: 1.25rem;
+    border-radius: 10px;
+    border: 1px solid #f0e6d8;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.35rem;
 }
 
 .form-group label {
     font-weight: 600;
-    color: #2c3e50;
-    font-size: 0.95rem;
+    color: #1a3a52;
+    font-size: 0.88rem;
 }
 
 .form-group input,
 .form-group select {
-    padding: 0.75rem;
-    border: 2px solid #ecf0f1;
+    padding: 0.58rem 0.7rem;
+    border: 2px solid #e0d4c5;
     border-radius: 8px;
-    font-size: 0.95rem;
-    transition: border-color 0.3s ease;
+    font-size: 0.9rem;
+    color: #1a3a52;
+    background: white;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
     font-family: inherit;
 }
 
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #667eea;
-    background-color: #f8f9ff;
+    border-color: var(--planner-gold);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(169, 130, 58, 0.12);
 }
 
 .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0.75rem;
 }
 
 .interests-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.5rem;
 }
 
 .interest-tag {
-    padding: 0.6rem 1rem;
-    border: 2px solid #ecf0f1;
+    padding: 0.48rem 0.65rem;
+    border: 2px solid #e0d4c5;
     background: white;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.84rem;
     transition: all 0.3s ease;
-    color: #2c3e50;
+    color: #1a3a52;
 }
 
 .interest-tag:hover {
-    border-color: #667eea;
-    background: #f8f9ff;
+    border-color: var(--planner-gold);
+    background: #f5ede2;
+    color: var(--planner-gold-hover);
 }
 
 .interest-tag.active {
-    background: #667eea;
+    background: var(--planner-gold);
     color: white;
-    border-color: #667eea;
+    border-color: var(--planner-gold);
 }
 
 .generate-btn {
-    padding: 1rem;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 0.72rem;
+    background: var(--planner-gold);
     color: white;
     border: none;
     border-radius: 8px;
@@ -119,7 +131,8 @@
 
 .generate-btn:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    background: var(--planner-gold-hover);
+    box-shadow: 0 5px 20px rgba(169, 130, 58, 0.35);
 }
 
 .generate-btn:disabled {
@@ -128,20 +141,20 @@
 }
 
 .error-message {
-    background: #fee;
-    color: #c33;
+    background: #f5ede2;
+    color: #1a3a52;
     padding: 1rem;
     border-radius: 8px;
-    border-left: 4px solid #c33;
+    border-left: 4px solid var(--planner-gold);
     grid-column: 1 / -1;
     margin-top: 1rem;
 }
 
 .itinerary-output {
-    background: #f8f9fa;
-    border: 2px solid #ecf0f1;
-    border-radius: 12px;
-    padding: 2rem;
+    background: #FFFBF7;
+    border: 2px solid #f0e6d8;
+    border-radius: 10px;
+    padding: 1.25rem;
     grid-column: 1 / -1;
 }
 
@@ -156,7 +169,7 @@
 
 .output-header h3 {
     margin: 0;
-    color: #2c3e50;
+    color: #1a3a52;
     font-size: 1.3rem;
 }
 
@@ -170,8 +183,8 @@
 .format-selector {
     padding: 0.6rem 1rem;
     background: white;
-    color: #2c3e50;
-    border: 2px solid #ecf0f1;
+    color: #1a3a52;
+    border: 2px solid #e0d4c5;
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
@@ -181,19 +194,19 @@
 }
 
 .format-selector:hover {
-    border-color: #667eea;
-    background: #f8f9ff;
+    border-color: var(--planner-gold);
+    background: #f5ede2;
 }
 
 .format-selector:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: var(--planner-gold);
+    box-shadow: 0 0 0 3px rgba(169, 130, 58, 0.12);
 }
 
 .download-btn {
     padding: 0.6rem 1.2rem;
-    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+    background: var(--planner-gold);
     color: white;
     border: none;
     border-radius: 6px;
@@ -206,7 +219,8 @@
 
 .download-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+    background: var(--planner-gold-hover);
+    box-shadow: 0 5px 15px rgba(169, 130, 58, 0.3);
 }
 
 .download-btn:active {
@@ -214,33 +228,34 @@
 }
 
 .itinerary-text {
-    max-height: 600px;
+    max-height: 420px;
     overflow-y: auto;
     background: white;
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 8px;
-    line-height: 1.8;
-    font-size: 0.95rem;
-    color: #2c3e50;
+    line-height: 1.65;
+    font-size: 0.9rem;
+    color: #1a3a52;
+    border: 1px solid #f0e6d8;
 }
 
 /* Formatted Content Styling */
 .formatted-heading-2 {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #667eea;
+    color: var(--planner-gold);
     margin: 1.5rem 0 0.75rem 0;
     padding-bottom: 0.5rem;
-    border-bottom: 3px solid #667eea;
+    border-bottom: 3px solid var(--planner-gold);
 }
 
 .formatted-heading-3 {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #764ba2;
+    color: var(--planner-gold-hover);
     margin: 1.2rem 0 0.5rem 0;
     padding-left: 0.5rem;
-    border-left: 4px solid #764ba2;
+    border-left: 4px solid var(--planner-gold);
 }
 
 .formatted-list {
@@ -261,13 +276,13 @@
     content: '✓';
     position: absolute;
     left: 0;
-    color: #667eea;
+    color: var(--planner-gold);
     font-weight: bold;
     font-size: 1.1rem;
 }
 
 .formatted-list li strong {
-    color: #764ba2;
+    color: var(--planner-gold-hover);
     font-weight: 600;
 }
 
@@ -278,7 +293,7 @@
 }
 
 .formatted-paragraph strong {
-    color: #764ba2;
+    color: var(--planner-gold-hover);
     font-weight: 600;
 }
 
@@ -301,47 +316,47 @@
 }
 
 .itinerary-text::-webkit-scrollbar-track {
-    background: #ecf0f1;
+    background: #f5ede2;
     border-radius: 4px;
 }
 
 .itinerary-text::-webkit-scrollbar-thumb {
-    background: #667eea;
+    background: var(--planner-gold);
     border-radius: 4px;
 }
 
 .itinerary-text::-webkit-scrollbar-thumb:hover {
-    background: #764ba2;
+    background: var(--planner-gold-hover);
 }
 
 /* Mobile Responsive */
 @media (max-width: 1024px) {
     .planner-container {
         max-width: 100%;
-        padding: 2rem;
+        padding: 1.5rem;
     }
 
     .planner-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.25rem;
     }
 
     .form-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
     .interests-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(6, 1fr);
     }
 }
 
 @media (max-width: 768px) {
     .planner-container {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
 
     .planner-form {
-        padding: 1.5rem;
+        padding: 1rem;
     }
 
     .form-row {
@@ -349,7 +364,7 @@
     }
 
     .interests-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .output-header {
@@ -377,7 +392,7 @@
 
 @media (max-width: 480px) {
     .ai-trip-planner {
-        padding: 1.5rem 1rem;
+        padding: 1rem 0.75rem;
     }
 
     .planner-container {
@@ -389,7 +404,7 @@
     }
 
     .interests-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .planner-container h2 {
