@@ -1,163 +1,150 @@
 .traveltips-wrapper {
-    max-width: 1100px;
+    --travel-gold: #A9823A;
+    --travel-gold-hover: #8F6F31;
+
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 32px 24px;
+    padding: 60px 24px;
+    background: linear-gradient(135deg, #FFFBF7 0%, #fef5ed 100%);
 }
 
 .traveltips-header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
-.header-badge {
+.traveltips-header .header-badge {
     display: inline-block;
-    background: linear-gradient(90deg, var(--brand), var(--accent));
+    background: var(--travel-gold);
     color: white;
-    padding: 8px 14px;
+    padding: 10px 20px;
     border-radius: 999px;
     font-weight: 700;
-    font-size: 0.8rem;
-    margin-bottom: 10px;
+    font-size: 0.75rem;
+    margin-bottom: 20px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
 }
 
 .traveltips-header h1 {
-    font-size: 2rem;
-    margin: 8px 0;
+    font-size: 2.5rem;
+    margin: 16px 0;
+    color: #1a3a52;
+    font-weight: 700;
 }
 
 .traveltips-header p {
-    color: #666;
+    color: #4B5563;
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.7;
     overflow-wrap: break-word;
 }
 
-.accordion {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
+.travel-tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: 20px;
+    align-items: start;
 }
 
-.accordion-item {
+.travel-tip-card {
+    min-height: 140px;
+    background: white;
     border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 0, 102, 0.2);
-    background: linear-gradient(135deg, #6f5aa5, #8b75bd);
-    color: #ffffff;
+    border: 1px solid #f0e6d8;
+    border-left: 6px solid var(--travel-gold);
+    color: #1a3a52;
+    box-shadow: 0 2px 12px rgba(26, 58, 82, 0.08);
     transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
 }
 
-.accordion-item:hover {
+.travel-tip-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 22px rgba(124, 58, 237, 0.22);
+    box-shadow: 0 8px 24px rgba(26, 58, 82, 0.12);
 }
 
-.accordion-summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 120px;
-    padding: 26px 30px;
+.travel-tip-summary {
     width: 100%;
+    min-height: 140px;
+    padding: 12px 12px 12px 12px;
     background: transparent;
-    border: none;
-    cursor: pointer;
-    gap: 18px;
+    border: 0;
     color: inherit;
-}
-
-.summary-left {
+    cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 16px;
-    min-width: 0;
-    flex: 1 1 auto;
-}
-
-.icon {
-    font-size: 2rem;
-    margin-top: 2px;
-    width: 2.4rem;
-    min-width: 2.4rem;
-    line-height: 1;
+    justify-content: center;
     text-align: center;
 }
 
-.summary-title {
-    text-align: left !important;
-    font-weight: 800;
-    color: #ff66b2;
-    font-size: 1.25rem;
-    line-height: 1.2;
-    overflow-wrap: break-word;
+.travel-tip-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
 }
 
-.summary-sub {
-    color: #ffffff;
-    font-size: 1rem;
-    margin-top: 8px;
+.travel-tip-card h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #1a3a52;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.travel-tip-card p {
+    margin: 0;
+    color: #4B5563;
+    font-size: 0.8rem;
     line-height: 1.45;
     overflow-wrap: break-word;
 }
 
-.summary-action {
+.travel-tip-action {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    min-width: 54px;
+    min-height: 30px;
+    padding: 6px 12px;
     border-radius: 999px;
-    background: rgba(102, 255, 153, 0.15);
-    border: 1px solid rgba(102, 255, 153, 0.3);
-    color: #66ff99;
-    font-size: 1.4rem;
+    background: #f5ede2;
+    border: 1px solid #e0d4c5;
+    color: var(--travel-gold-hover);
+    font-size: 0.8rem;
     font-weight: 700;
     flex-shrink: 0;
     line-height: 1;
 }
 
-.accordion-panel {
-    padding: 0 30px 30px 86px;
-}
-
-.panel-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
-    gap: 10px;
-}
-
-.panel-item {
-    background: rgba(102, 255, 153, 0.15);
-    border: 1px solid rgba(102, 255, 153, 0.3);
-    box-shadow: none;
-    padding: 10px 14px;
-    border-radius: 999px;
-    color: #66ff99;
-    font-weight: 700;
-    text-align: left;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    line-height: 1.5;
-    font-size: 0.95rem;
-    overflow-wrap: break-word;
-}
-
 @media (max-width: 768px) {
     .traveltips-wrapper {
-        padding: 16px 12px
+        padding: 40px 16px;
     }
 
-    .panel-grid {
-        grid-template-columns: repeat(1, 1fr)
+    .traveltips-header h1 {
+        font-size: 2rem;
     }
 }
 
 @media (max-width: 480px) {
     .traveltips-wrapper {
-        padding: 12px 0;
+        padding: 32px 12px;
+    }
+
+    .traveltips-header {
+        margin-bottom: 32px;
     }
 
     .traveltips-header h1 {
         font-size: 1.6rem;
+        margin: 12px 0;
     }
 
     .traveltips-header p {
@@ -165,47 +152,114 @@
         line-height: 1.55;
     }
 
-    .accordion {
-        gap: 14px;
-    }
-
-    .accordion-summary,
-    .accordion-panel {
-        padding: 16px 14px;
-    }
-
-    .accordion-summary {
-        min-height: 110px;
-    }
-
-    .accordion-panel {
-        padding-top: 0;
-    }
-
-    .icon {
-        font-size: 1.5rem;
-        width: 1.8rem;
-        min-width: 1.8rem;
-    }
-
-    .summary-title {
-        font-size: 1rem;
-        line-height: 1.2;
-    }
-
-    .summary-sub {
-        font-size: 0.9rem;
-        line-height: 1.35;
+    .travel-tip-summary {
+        min-height: 190px;
+        padding: 22px 16px 18px;
     }
 }
 
-@media (max-width: 380px) {
-    .summary-left {
-        gap: 10px;
+.travel-tip-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(26, 58, 82, 0.45);
+}
+
+.travel-tip-modal {
+    position: relative;
+    width: min(560px, 100%);
+    max-height: min(720px, calc(100vh - 48px));
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid #f0e6d8;
+    border-left: 6px solid var(--travel-gold);
+    border-radius: 12px;
+    box-shadow: 0 24px 60px rgba(26, 58, 82, 0.24);
+    padding: 24px;
+    color: #1a3a52;
+}
+
+.travel-tip-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    border: 1px solid #e0d4c5;
+    background: #f5ede2;
+    color: var(--travel-gold-hover);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.travel-tip-modal-header {
+    padding-right: 44px;
+}
+
+.travel-tip-modal-header h2 {
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: #1a3a52;
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+.travel-tip-modal-header p {
+    font-size: 0.8rem;
+    margin: 0;
+    color: #4B5563;
+    line-height: 1.55;
+}
+
+.modal-tips-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.modal-tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 12px 12px 12px;
+    background: #f5ede2;
+    border: 1px solid #e0d4c5;
+    border-radius: 8px;
+    color: var(--travel-gold-hover);
+    font-size: 0.80rem;
+    font-weight: 600;
+    line-height: 1.45;
+    overflow-wrap: break-word;
+}
+
+.modal-tip-item span {
+    flex: 0 0 auto;
+    line-height: 1.35;
+}
+
+@media (max-width: 480px) {
+    .travel-tip-modal-backdrop {
+        align-items: flex-end;
+        padding: 12px;
     }
 
-    .accordion-summary,
-    .accordion-panel {
-        padding: 14px;
+    .travel-tip-modal {
+        max-height: calc(100vh - 24px);
+        padding: 24px 18px;
+    }
+
+    .travel-tip-modal-header h2 {
+        font-size: 1.25rem;
     }
 }

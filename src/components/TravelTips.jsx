@@ -1,11 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { travelTips } from '../data/travelTips'
 import '../styles/TravelTips.css'
 
 function TravelTips() {
-  const [openId, setOpenId] = useState(null)
+  const [selectedTip, setSelectedTip] = useState(null)
 
-  const toggle = (id) => setOpenId(openId === id ? null : id)
+  useEffect(() => {
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedTip(null)
+      }
+    }
+
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [])
 
   return (
     <div className="traveltips-wrapper">
@@ -15,32 +24,41 @@ function TravelTips() {
         <p>Practical advice from experienced women travelers to make your journey smoother</p>
       </div>
 
-      <div className="accordion">
+      <div className="travel-tips-grid">
         {travelTips.map(section => (
-          <div key={section.id} className={`accordion-item ${openId === section.id ? 'open' : ''}`}>
-            <button className="accordion-summary" onClick={() => toggle(section.id)}>
-              <div className="summary-left">
-                <div className="icon">📌</div>
-                <div>
-                  <div className="summary-title">{section.title}</div>
-                  <div className="summary-sub">{section.subtitle}</div>
-                </div>
+          <article key={section.id} className="travel-tip-card">
+            <button className="travel-tip-summary" onClick={() => setSelectedTip(section)}>
+              <div className="travel-tip-content">
+                <h3>{section.title}</h3>
+                <p>{section.subtitle}</p>
+                <span className="travel-tip-action">View</span>
               </div>
-              <div className="summary-action">{openId === section.id ? '−' : '+'}</div>
             </button>
-
-            {openId === section.id && (
-              <div className="accordion-panel">
-                <div className="panel-grid">
-                  {section.items.map((it, idx) => (
-                    <div key={idx} className="panel-item">✓ {it}</div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
+          </article>
         ))}
       </div>
+
+      {selectedTip && (
+        <div className="travel-tip-modal-backdrop" onClick={() => setSelectedTip(null)}>
+          <div className="travel-tip-modal" role="dialog" aria-modal="true" aria-labelledby="travel-tip-modal-title" onClick={(event) => event.stopPropagation()}>
+            <button className="travel-tip-modal-close" type="button" aria-label="Close travel tips" onClick={() => setSelectedTip(null)}>
+              x
+            </button>
+            <div className="travel-tip-modal-header">
+              <h2 id="travel-tip-modal-title">{selectedTip.title}</h2>
+              <p>{selectedTip.subtitle}</p>
+            </div>
+            <div className="modal-tips-list">
+              {selectedTip.items.map((item, idx) => (
+                <div key={idx} className="modal-tip-item">
+                  <span>+</span>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

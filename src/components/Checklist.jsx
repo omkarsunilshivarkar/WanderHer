@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { checklistData } from '../data/checklistItems'
 import '../styles/Checklist.css'
 
 function Checklist() {
   const [checkedItems, setCheckedItems] = useState({})
+  const [activeTab, setActiveTab] = useState('beforeTrip')
 
-  // Load from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem('checklistItems')
     if (saved) {
@@ -13,7 +13,6 @@ function Checklist() {
     }
   }, [])
 
-  // Save to localStorage whenever checkedItems changes
   useEffect(() => {
     localStorage.setItem('checklistItems', JSON.stringify(checkedItems))
   }, [checkedItems])
@@ -45,11 +44,33 @@ function Checklist() {
     ...checklistData.packingEssentials
   ])
 
-  const ChecklistSection = ({ title, icon, items, progress }) => (
+  const checklistTabs = [
+    {
+      key: 'beforeTrip',
+      title: 'Before Your Trip',
+      items: checklistData.beforeTrip,
+      progress: beforeProgress
+    },
+    {
+      key: 'duringTrip',
+      title: 'During Your Trip',
+      items: checklistData.duringTrip,
+      progress: duringProgress
+    },
+    {
+      key: 'packingEssentials',
+      title: 'Packing Essentials',
+      items: checklistData.packingEssentials,
+      progress: packingProgress
+    }
+  ]
+
+  const activeSection = checklistTabs.find(tab => tab.key === activeTab) || checklistTabs[0]
+
+  const ChecklistSection = ({ title, items, progress }) => (
     <div className="checklist-section">
       <div className="section-header">
         <div className="section-title">
-          <span className="section-icon">{icon}</span>
           <h3>{title}</h3>
         </div>
         <div className="progress-badge">{progress}%</div>
@@ -77,14 +98,12 @@ function Checklist() {
 
   return (
     <div className="checklist-wrapper">
-      {/* Header */}
       <div className="checklist-header">
         <div className="header-badge">GET PREPARED</div>
         <h1>Travel Safety Checklist</h1>
         <p>Interactive checklist to ensure you're fully prepared for your solo adventure</p>
       </div>
 
-      {/* Overall Progress */}
       <div className="overall-progress">
         <div className="progress-container">
           <div className="progress-bar">
@@ -93,38 +112,29 @@ function Checklist() {
           <span className="progress-text">Overall Progress: {overallProgress}%</span>
         </div>
         <button className="reset-all-btn" onClick={handleResetAll}>
-          ↻ Reset All
+          Reset All
         </button>
       </div>
 
-      {/* Checklist Sections */}
-      <div className="checklist-container">
-        <ChecklistSection
-          title="Before Your Trip"
-          icon="📋"
-          items={checklistData.beforeTrip}
-          progress={beforeProgress}
-        />
-        <ChecklistSection
-          title="During Your Trip"
-          icon="✈️"
-          items={checklistData.duringTrip}
-          progress={duringProgress}
-        />
-        <ChecklistSection
-          title="Packing Essentials"
-          icon="🎒"
-          items={checklistData.packingEssentials}
-          progress={packingProgress}
-        />
+      <div className="checklist-tabs">
+        {checklistTabs.map(tab => (
+          <button
+            key={tab.key}
+            className={`checklist-tab ${activeTab === tab.key ? 'active' : ''}`}
+            onClick={() => setActiveTab(tab.key)}
+          >
+            <span>{tab.title}</span>
+            <strong>{tab.progress}%</strong>
+          </button>
+        ))}
       </div>
 
-      {/* Pro Tip */}
-      <div className="pro-tip">
-        <span className="pro-tip-icon">💡</span>
-        <div className="pro-tip-content">
-          <strong>Pro Tip:</strong> Take a screenshot of your completed checklist and share it with a trusted friend or family member before your trip!
-        </div>
+      <div className="checklist-container">
+        <ChecklistSection
+          title={activeSection.title}
+          items={activeSection.items}
+          progress={activeSection.progress}
+        />
       </div>
     </div>
   )
