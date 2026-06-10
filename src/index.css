@@ -717,7 +717,6 @@ a {
     width: 100%;
   }
 
-  .hero-image,
   .journey-card {
     display: none;
   }
@@ -810,7 +809,6 @@ a {
     padding: 12px 18px;
   }
 
-  .hero-image,
   .journey-card {
     min-height: 360px;
   }

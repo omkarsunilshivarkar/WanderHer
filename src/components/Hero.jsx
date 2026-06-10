@@ -25,7 +25,7 @@ export default function Hero() {
           <img
             src={heroImage}
             alt="Woman traveling the world"
-            className="hero-image"
+            className="hero-mascot"
           />
         </div>
       </div>
