@@ -7,6 +7,7 @@ import AITripPlanner from './components/AITripPlanner'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <section id="emergency" className="section-block">
           <EmergencyContacts />
         </section>
+        <ScrollToTop />
       </div>
       <Footer />
     </div>
