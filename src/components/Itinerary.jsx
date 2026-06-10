@@ -4,11 +4,6 @@ import '../styles/Itinerary.css'
 
 function Itinerary() {
   const [selectedItinerary, setSelectedItinerary] = useState(null)
-  const [difficultyFilter, setDifficultyFilter] = useState('all')
-
-  const filteredItineraries = difficultyFilter === 'all'
-    ? itineraries
-    : itineraries.filter(it => it.difficulty === difficultyFilter)
 
   const openModal = (itinerary) => {
     setSelectedItinerary(itinerary)
@@ -28,38 +23,8 @@ function Itinerary() {
         <p>Explore pre-planned itineraries created by experienced women travelers from around the world</p>
       </div>
 
-      <div className="filter-section">
-        <span className="filter-label">Filter by Difficulty:</span>
-        <div className="filter-buttons">
-          <button
-            className={`filter-btn ${difficultyFilter === 'all' ? 'active' : ''}`}
-            onClick={() => setDifficultyFilter('all')}
-          >
-            All Levels
-          </button>
-          <button
-            className={`filter-btn ${difficultyFilter === 'Easy' ? 'active' : ''}`}
-            onClick={() => setDifficultyFilter('Easy')}
-          >
-            Easy
-          </button>
-          <button
-            className={`filter-btn ${difficultyFilter === 'Medium' ? 'active' : ''}`}
-            onClick={() => setDifficultyFilter('Medium')}
-          >
-            Medium
-          </button>
-          <button
-            className={`filter-btn ${difficultyFilter === 'Hard' ? 'active' : ''}`}
-            onClick={() => setDifficultyFilter('Hard')}
-          >
-            Hard
-          </button>
-        </div>
-      </div>
-
       <div className="itineraries-grid">
-        {filteredItineraries.map(itinerary => (
+        {itineraries.map(itinerary => (
           <div key={itinerary.id} className="itinerary-card" onClick={() => openModal(itinerary)}>
             <div className="card-header">
               <div className="destination-tag">{itinerary.destination}</div>

@@ -46,22 +46,13 @@
 
 /* Danger Alert Section */
 .danger-alert {
-  background: white;
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 60px;
+  padding: 18px 24px;
+  margin-bottom: 52px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
-  border-left: 6px solid var(--emergency-gold);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(26, 58, 82, 0.08);
-}
-
-.danger-alert:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(26, 58, 82, 0.12);
+  gap: 20px;
+  min-height: 96px;
 }
 
 .danger-left-section {
@@ -69,7 +60,8 @@
   flex-direction: row;
   gap: 16px;
   flex: 1;
-  align-items: flex-start;
+  min-width: 0;
+  align-items: center;
 }
 
 .danger-icon {
@@ -152,6 +144,37 @@
   transform: scale(0.95);
 }
 
+.danger-alert,
+.helpline-card-grid,
+.state-helpline-card,
+.app-card {
+  background: white;
+  border-radius: 12px;
+  border-left: 6px solid var(--emergency-gold);
+  box-shadow: 0 2px 12px rgba(26, 58, 82, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.danger-alert:hover,
+.helpline-card-grid:hover,
+.state-helpline-card:hover,
+.app-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(26, 58, 82, 0.12);
+}
+
+.helpline-card-grid::after,
+.state-helpline-card::after,
+.app-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+  pointer-events: none;
+}
+
 /* National Helplines Section */
 .national-helplines {
   margin-bottom: 80px;
@@ -175,18 +198,11 @@
 }
 
 .helpline-card-grid {
-  background: white;
-  border-radius: 12px;
-  padding: 10px 14px;
+  padding: 14px 18px;
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  border-left: 6px solid var(--emergency-gold);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 12px rgba(26, 58, 82, 0.08);
-  position: relative;
-  overflow: hidden;
-  min-height: 68px;
+  gap: 14px;
+  min-height: 86px;
   align-items: center;
   justify-content: space-between;
 }
@@ -196,25 +212,10 @@
   flex-direction: column;
   gap: 8px;
   flex: 1;
+  min-width: 0;
   position: relative;
   z-index: 1;
   justify-content: flex-start;
-}
-
-.helpline-card-grid::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
-  pointer-events: none;
-}
-
-.helpline-card-grid:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(26, 58, 82, 0.12);
 }
 
 .helpline-icon-grid {
@@ -239,7 +240,7 @@
   font-size: 0.95rem;
   font-weight: 600;
   color: #1a3a52;
-  margin: 0 0 4px 0;
+  margin: 0;
   line-height: 1.2;
 }
 
@@ -293,13 +294,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 35px;
-  height: 35px;
+  width: 44px;
+  height: 44px;
   background: var(--emergency-gold);
   border-radius: 50%;
   color: white;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(201, 169, 97, 0.3);
   cursor: pointer;
@@ -403,7 +404,7 @@
   border-color: var(--emergency-gold);
   color: var(--emergency-gold);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(201, 169, 97, 0.15);
+  box-shadow: 0 4px 12px rgba(169, 130, 58, 0.15);
 }
 
 .state-btn.active {
@@ -420,36 +421,13 @@
 }
 
 .state-helpline-card {
-  background: white;
-  border-radius: 12px;
-  padding: 10px 14px;
+  padding: 14px 18px;
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  border-left: 6px solid var(--emergency-gold);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 12px rgba(26, 58, 82, 0.08);
-  position: relative;
-  overflow: hidden;
-  min-height: 68px;
+  gap: 14px;
+  min-height: 86px;
   align-items: center;
   justify-content: space-between;
-}
-
-.state-helpline-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
-  pointer-events: none;
-}
-
-.state-helpline-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(26, 58, 82, 0.12);
 }
 
 .state-helpline-title {
@@ -457,7 +435,7 @@
   font-weight: 600;
   color: #1a3a52;
   margin: 0 0 0 0;
-  line-height: 0.5;
+  line-height: 1.25;
 }
 
 .state-helpline-desc {
@@ -479,42 +457,20 @@
 }
 
 .app-card {
-  background: white;
-  border-radius: 12px;
-  padding: 10px 14px;
+  padding: 14px 18px;
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  border-left: 6px solid var(--emergency-gold);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 12px rgba(26, 58, 82, 0.08);
-  position: relative;
-  overflow: hidden;
-  min-height: 68px;
+  gap: 14px;
+  min-height: 86px;
   align-items: center;
   justify-content: space-between;
-}
-
-.app-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
-  pointer-events: none;
-}
-
-.app-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(26, 58, 82, 0.12);
 }
 
 .app-left-section {
   display: flex;
   flex-direction: row;
   flex: 1;
+  min-width: 0;
   position: relative;
   z-index: 1;
   align-items: center;
@@ -524,11 +480,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 35px;
-  height: 35px;
+  width: 44px;
+  height: 44px;
   background: #f5ede2;
   border-radius: 10px;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   flex-shrink: 0;
 }
 
@@ -583,7 +539,12 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .emergency-contacts {
-    padding: 40px 16px;
+    padding: 32px 16px;
+  }
+
+  .emergency-header {
+    margin-bottom: 32px;
+    padding: 0;
   }
 
   .emergency-header h1 {
@@ -591,13 +552,28 @@
   }
 
   .danger-alert {
-    flex-direction: column;
-    gap: 20px;
-    padding: 28px 20px;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+    margin-bottom: 44px;
   }
 
-  .alert-warning {
-    font-size: 2.8rem;
+  .danger-left-section {
+    align-items: center;
+  }
+
+  .danger-right-section {
+    justify-content: flex-end;
+  }
+
+  .national-helplines,
+  .state-helplines {
+    margin-bottom: 52px;
+  }
+
+  .safety-apps {
+    margin-bottom: 28px;
   }
 
   .national-helplines h2,
@@ -610,26 +586,16 @@
   .helplines-grid,
   .state-helplines-grid,
   .apps-grid {
-    gap: 20px;
+    grid-template-columns: 1fr;
+    gap: 14px;
   }
 
-  .helpline-card {
-    min-height: 320px;
-  }
-
-  .helpline-icon {
-    width: 80px;
-    height: 80px;
-    font-size: 2.5rem;
-    margin: 24px auto 16px;
-  }
-
-  .helpline-title {
-    font-size: 1.2rem;
-  }
-
-  .helpline-number {
-    font-size: 1.6rem;
+  .helpline-card-grid,
+  .state-helpline-card,
+  .app-card {
+    min-height: 64px;
+    padding: 12px 14px;
+    gap: 12px;
   }
 
   .state-selector {
@@ -645,11 +611,11 @@
 
 @media (max-width: 480px) {
   .emergency-contacts {
-    padding: 32px 12px;
+    padding: 26px 12px;
   }
 
   .emergency-header {
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
 
   .emergency-header h1 {
@@ -659,30 +625,53 @@
 
   .emergency-header p {
     font-size: 0.95rem;
+    line-height: 1.55;
   }
 
   .danger-alert {
-    padding: 20px 16px;
-    border-radius: 12px;
-    margin-bottom: 40px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 58px;
+    padding: 10px 12px;
+    border-left-width: 5px;
+    border-radius: 10px;
+    margin-bottom: 32px;
   }
 
-  .alert-warning {
-    font-size: 2.2rem;
+  .danger-left-section {
+    min-width: 0;
   }
 
-  .alert-content h2 {
-    font-size: 1.3rem;
+  .danger-icon {
+    display: none;
   }
 
-  .alert-content p {
+  .danger-content h2 {
+    font-size: 0.88rem;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .danger-content p {
+    display: none;
+  }
+
+  .danger-right-section {
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .danger-number {
+    font-size: 1.1rem;
+    letter-spacing: 0;
+  }
+
+  .danger-btn-call {
+    width: 32px;
+    height: 32px;
     font-size: 0.9rem;
-    margin-bottom: 16px;
-  }
-
-  .danger-btn {
-    padding: 12px 20px;
-    font-size: 0.85rem;
   }
 
   .national-helplines h2,
@@ -692,49 +681,70 @@
     margin-bottom: 20px;
   }
 
-  .helplines-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .national-helplines,
+  .state-helplines {
+    margin-bottom: 44px;
   }
 
-  .helpline-card {
-    padding: 20px 16px;
+  .helplines-grid,
+  .state-helplines-grid,
+  .apps-grid {
+    gap: 12px;
   }
 
-  .helpline-icon {
-    width: 60px;
-    height: 60px;
+  .helpline-card-grid,
+  .state-helpline-card,
+  .app-card {
+    min-height: 58px;
+    padding: 10px 12px;
+    border-left-width: 5px;
+    border-radius: 10px;
   }
 
-  .helpline-title {
-    font-size: 1rem;
+  .helpline-title-grid,
+  .state-helpline-title,
+  .app-name {
+    font-size: 0.88rem;
   }
 
-  .helpline-desc {
-    font-size: 0.85rem;
+  .state-helpline-desc,
+  .app-desc {
+    font-size: 0.74rem;
+    line-height: 1.35;
+  }
+
+  .helpline-actions-grid {
+    gap: 6px;
+  }
+
+  .helpline-number-grid {
+    font-size: 1.1rem;
+    letter-spacing: 0;
+  }
+
+  .helpline-call-btn-grid,
+  .app-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
   }
 
   .state-selector {
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 6px;
     margin: 16px 0 20px 0;
+    padding: 0;
+    overflow: visible;
   }
 
   .state-btn {
+    flex: 1 1 calc(50% - 8px);
+    max-width: 100%;
+    min-height: 38px;
     padding: 8px 12px;
     font-size: 0.8rem;
-  }
-
-  .state-helplines-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .apps-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .app-card {
-    padding: 20px 16px;
+    white-space: normal;
+    line-height: 1.2;
   }
 }

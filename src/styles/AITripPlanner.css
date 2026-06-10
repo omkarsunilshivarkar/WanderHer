@@ -11,10 +11,10 @@
     margin: 0 auto;
     background: white;
     border-radius: 12px;
-    border: 6px solid #A9823A
-;
+    border: 1px solid #f0e6d8;
+    border-left: 6px solid var(--planner-gold);
     padding: 1.75rem;
-    box-shadow: 0 8px 28px rgba(26, 58, 82, 0.08);
+    box-shadow: 0 2px 12px rgba(26, 58, 82, 0.08);
 }
 
 .planner-container h2 {
@@ -46,7 +46,7 @@
     gap: 1rem;
     background: #FFFBF7;
     padding: 1.25rem;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 1px solid #f0e6d8;
 }
 
@@ -64,7 +64,8 @@
 
 .form-group input,
 .form-group select {
-    padding: 0.58rem 0.7rem;
+    min-height: 42px;
+    padding: 0.58rem 0.9rem;
     border: 2px solid #e0d4c5;
     border-radius: 8px;
     font-size: 0.9rem;
@@ -95,30 +96,36 @@
 }
 
 .interest-tag {
-    padding: 0.48rem 0.65rem;
+    min-height: 42px;
+    padding: 10px 16px;
     border: 2px solid #e0d4c5;
     background: white;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 0.84rem;
+    font-size: 0.9rem;
+    font-weight: 600;
     transition: all 0.3s ease;
     color: #1a3a52;
+    box-shadow: 0 2px 8px rgba(26, 58, 82, 0.06);
 }
 
 .interest-tag:hover {
     border-color: var(--planner-gold);
-    background: #f5ede2;
     color: var(--planner-gold-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(169, 130, 58, 0.15);
 }
 
 .interest-tag.active {
     background: var(--planner-gold);
     color: white;
     border-color: var(--planner-gold);
+    box-shadow: 0 4px 12px rgba(201, 169, 97, 0.3);
 }
 
 .generate-btn {
-    padding: 0.72rem;
+    min-height: 42px;
+    padding: 10px 16px;
     background: var(--planner-gold);
     color: white;
     border: none;
@@ -152,10 +159,12 @@
 
 .itinerary-output {
     background: #FFFBF7;
-    border: 2px solid #f0e6d8;
-    border-radius: 10px;
+    border: 1px solid #f0e6d8;
+    border-left: 6px solid var(--planner-gold);
+    border-radius: 12px;
     padding: 1.25rem;
     grid-column: 1 / -1;
+    box-shadow: 0 2px 12px rgba(26, 58, 82, 0.08);
 }
 
 .output-header {
@@ -181,11 +190,12 @@
 }
 
 .format-selector {
-    padding: 0.6rem 1rem;
+    min-height: 42px;
+    padding: 10px 16px;
     background: white;
     color: #1a3a52;
     border: 2px solid #e0d4c5;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
     font-size: 0.9rem;
@@ -205,11 +215,12 @@
 }
 
 .download-btn {
-    padding: 0.6rem 1.2rem;
+    min-height: 42px;
+    padding: 10px 16px;
     background: var(--planner-gold);
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -353,6 +364,7 @@
 @media (max-width: 768px) {
     .planner-container {
         padding: 1.25rem;
+        border-left-width: 5px;
     }
 
     .planner-form {
@@ -397,14 +409,34 @@
 
     .planner-container {
         padding: 1rem;
+        border-radius: 10px;
     }
 
     .planner-form {
         padding: 1rem;
+        border-radius: 10px;
     }
 
     .interests-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 0.4rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .interest-tag,
+    .generate-btn,
+    .format-selector,
+    .download-btn {
+        min-height: 38px;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+
+    .itinerary-output {
+        border-left-width: 5px;
+        border-radius: 10px;
+        padding: 1rem;
     }
 
     .planner-container h2 {
