@@ -39,10 +39,10 @@ const ScrollToTop = () => {
   const dynamicStyles = {
     ...styles.button,
     // Mobile: 35px button, closer to edge | Tablet: 45px button | Desktop: 50px button
-    width: isMobile ? '30px' : isTablet ? '40px' : '40px',
-    height: isMobile ? '30px' : isTablet ? '40px' : '40px',
-    bottom: isMobile ? '15px' : '30px',
-    right: isMobile ? '15px' : '30px',
+    width: isMobile ? '35px' : isTablet ? '40px' : '40px',
+    height: isMobile ? '35px' : isTablet ? '40px' : '40px',
+    bottom: isMobile ? '20px' : '30px',
+    right: isMobile ? '20px' : '30px',
     fontSize: isMobile ? '14px' : '18px',
   };
 
