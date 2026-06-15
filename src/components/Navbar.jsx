@@ -115,8 +115,7 @@ export default function Navbar() {
           <li>
             <button
               type="button"
-              className="nav-tab"
-              style={{ background: 'transparent', border: 'none' }}
+              className="nav-cta-btn"
               onClick={() => setIsLoginModalOpen(true)}
             >
               {isAuthenticated && user?.email ? `Logout` : 'Login / Signup'}
