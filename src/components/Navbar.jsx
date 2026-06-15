@@ -19,6 +19,35 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
+  const [prevAuth, setPrevAuth] = useState(isAuthenticated)
+  const [toast, setToast] = useState({ message: '', visible: false })
+
+  const triggerToast = (msg) => {
+    setToast({ message: msg, visible: true })
+  }
+
+  // Auto-close modal and trigger toast on successful login/signup or logout
+  useEffect(() => {
+    if (isAuthenticated && isLoginModalOpen) {
+      setIsLoginModalOpen(false)
+      setOpen(false) // Close mobile hamburger menu
+      triggerToast('Logged in successfully! Welcome to WanderHer.')
+    } else if (!isAuthenticated && prevAuth) {
+      setIsLoginModalOpen(false) // Close login modal on logout
+      setOpen(false) // Close mobile hamburger menu on logout
+      triggerToast('Logged out successfully. See you next time!')
+    }
+    setPrevAuth(isAuthenticated)
+  }, [isAuthenticated])
+
+  // Handle toast auto-dismiss
+  useEffect(() => {
+    if (!toast.visible) return
+    const timer = setTimeout(() => {
+      setToast({ message: '', visible: false })
+    }, 3500)
+    return () => clearTimeout(timer)
+  }, [toast.visible, toast.message])
 
 
   useEffect(() => {
@@ -138,6 +167,15 @@ export default function Navbar() {
               x
             </button>
             <LoginSignup />
+          </div>
+        </div>
+      )}
+
+      {toast.visible && (
+        <div className="toast-container">
+          <div className="toast">
+            <span className="toast-icon"></span>
+            <span className="toast-message">{toast.message}</span>
           </div>
         </div>
       )}
