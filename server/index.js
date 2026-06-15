@@ -43,7 +43,8 @@ app.use(
             const allowed = [
                 'http://localhost:5173',
                 'http://127.0.0.1:5173',
-                'http://192.168.29.249:5173'
+                'http://192.168.29.249:5173',
+                'https://wander-her-eight.vercel.app'
             ]
 
             // Also allow any http://<ip>:5173 (useful when your PC gets a new LAN IP)
