@@ -226,7 +226,7 @@ function Itinerary() {
         <p>Explore pre-planned itineraries created by experienced women travelers from around the world</p>
       </div>
 
-      <div className="share-form-wrap" style={{ background: 'transparent', boxShadow: 'none', border: 'none', padding: 0 }}>
+      {/* <div className="share-form-wrap" style={{ background: 'transparent', boxShadow: 'none', border: 'none', padding: 0 }}>
         <div className="share-form-header" style={{ marginBottom: 16, alignItems: 'center' }}>
           <div>
             <h2>Contribute to the Community</h2>
@@ -234,7 +234,7 @@ function Itinerary() {
           </div>
 
           <div>
-            <button type="button" className="action-btn primary-btn" onClick={openShareModal}>
+            <button type="button" className="action-btn primary-btn" onClick={openShareShareModal || openShareModal}>
               Share your Itinerary
             </button>
           </div>
@@ -343,7 +343,7 @@ function Itinerary() {
           </div>
         )}
 
-      </div>
+      </div> */}
 
 
 
@@ -379,7 +379,7 @@ function Itinerary() {
               Read Full Itinerary -›
             </button>
 
-            {itinerary._source === 'user' && isAuthenticated && (
+            {/* {itinerary._source === 'user' && isAuthenticated && (
               <button
                 className="action-btn secondary-btn"
                 style={{ width: '100%', marginTop: 10 }}
@@ -390,7 +390,7 @@ function Itinerary() {
               >
                 Delete
               </button>
-            )}
+            )} */}
 
           </div>
 

@@ -104,7 +104,7 @@ a {
   margin: 0;
   padding: 0;
   gap: 40px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   flex-grow: 1;
 }
