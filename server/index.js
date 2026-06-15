@@ -4,24 +4,22 @@ import dotenv from 'dotenv'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import { z } from 'zod'
-import sqlite3 from 'sqlite3'
-import { open } from 'sqlite'
+import { createClient } from '@libsql/client'
 
 
 dotenv.config()
 
 const app = express()
-const dbPath = process.env.DATABASE_PATH || './dev.db'
 
 let db
 
 async function initDb() {
-    db = await open({
-        filename: dbPath,
-        driver: sqlite3.Database
+    db = createClient({
+        url: process.env.TURSO_DATABASE_URL || 'file:dev.db',
+        authToken: process.env.TURSO_AUTH_TOKEN
     })
 
-    await db.exec(`
+    await db.execute(`
       CREATE TABLE IF NOT EXISTS users (
         id TEXT PRIMARY KEY,
         email TEXT UNIQUE NOT NULL,
@@ -108,7 +106,11 @@ app.post('/api/auth/signup', async (req, res) => {
 
     const { name, email, password } = parsed.data
 
-    const existing = await db.get('SELECT id FROM users WHERE email = ?', email)
+    const existingResult = await db.execute({
+        sql: 'SELECT id FROM users WHERE email = ?',
+        args: [email]
+    })
+    const existing = existingResult.rows[0]
     if (existing) return res.status(409).json({ message: 'Email already in use' })
 
 
@@ -116,14 +118,10 @@ app.post('/api/auth/signup', async (req, res) => {
     const passwordHash = await bcrypt.hash(password, 12)
     const createdAt = new Date().toISOString()
 
-    await db.run(
-        'INSERT INTO users (id, email, name, password_hash, created_at) VALUES (?, ?, ?, ?, ?)',
-        id,
-        email,
-        name ?? null,
-        passwordHash,
-        createdAt
-    )
+    await db.execute({
+        sql: 'INSERT INTO users (id, email, name, password_hash, created_at) VALUES (?, ?, ?, ?, ?)',
+        args: [id, email, name ?? null, passwordHash, createdAt]
+    })
 
 
     const token = signToken({ sub: id })
@@ -138,7 +136,11 @@ app.post('/api/auth/login', async (req, res) => {
 
     const { email, password } = parsed.data
 
-    const user = await db.get('SELECT id, password_hash FROM users WHERE email = ?', email)
+    const userResult = await db.execute({
+        sql: 'SELECT id, password_hash FROM users WHERE email = ?',
+        args: [email]
+    })
+    const user = userResult.rows[0]
 
 
     if (!user) return res.status(401).json({ message: 'Invalid email or password' })
@@ -151,10 +153,11 @@ app.post('/api/auth/login', async (req, res) => {
 })
 
 app.get('/api/auth/me', authMiddleware, async (req, res) => {
-    const user = await db.get(
-        'SELECT id, email, name, created_at FROM users WHERE id = ?',
-        req.userId
-    )
+    const userResult = await db.execute({
+        sql: 'SELECT id, email, name, created_at FROM users WHERE id = ?',
+        args: [req.userId]
+    })
+    const user = userResult.rows[0]
 
     if (!user) return res.status(404).json({ message: 'Not found' })
     res.json({ user })
