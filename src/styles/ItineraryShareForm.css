@@ -1,0 +1,101 @@
+/* Shared form styles for Itinerary section */
+
+.share-form-wrap {
+    margin: 0 auto 28px;
+    max-width: 1100px;
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+    border: 1px solid #f0e6d8;
+    box-shadow: 0 2px 12px rgba(26, 58, 82, 0.06);
+}
+
+.share-form-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.share-form-header h2 {
+    margin: 0;
+    color: #1a3a52;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.share-form-header p {
+    margin: 6px 0 0;
+    color: #4B5563;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.share-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.share-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.share-field label {
+    font-size: 0.8rem;
+    color: #4B5563;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.share-field input,
+.share-field textarea {
+    border: 1px solid #e0d4c5;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    outline: none;
+    background: #fff;
+}
+
+.share-field textarea {
+    min-height: 140px;
+    resize: vertical;
+    line-height: 1.45;
+}
+
+.share-wide {
+    grid-column: 1 / -1;
+}
+
+.share-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.share-helper {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #6B7280;
+    line-height: 1.5;
+}
+
+.share-helper code {
+    background: #f5ede2;
+    border: 1px solid #e0d4c5;
+    border-radius: 8px;
+    padding: 2px 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@media (max-width: 900px) {
+    .share-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
