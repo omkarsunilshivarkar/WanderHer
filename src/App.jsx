@@ -8,6 +8,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import LoginSignup from './components/LoginSignup'
 
 function App() {
   return (
@@ -16,9 +17,14 @@ function App() {
       <div className="page-content">
         <Hero />
 
+        {/* <section id="auth" className="section-block">
+          <LoginSignup />
+        </section> */}
+
         <section id="ai-planner" className="section-block">
           <AITripPlanner />
         </section>
+
 
         <section id="itinerary" className="section-block">
           <Itinerary />
