@@ -364,7 +364,7 @@
 
 @media (max-width: 600px) {
   .toast-container {
-    bottom: 28px;
+    bottom: 32px;
     right: 16px;
   }
 }
