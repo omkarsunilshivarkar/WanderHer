@@ -1,4 +1,16 @@
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8080'
+const getApiBase = () => {
+    if (import.meta.env.VITE_API_BASE) {
+        return import.meta.env.VITE_API_BASE
+    }
+    const hostname = typeof window !== 'undefined' ? window.location.hostname : 'localhost'
+    // If accessing via LAN IP, automatically target the same IP on backend port 8080
+    if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
+        return `http://${hostname}:8080`
+    }
+    return 'http://localhost:8080'
+}
+
+const API_BASE = getApiBase()
 
 function parseErrorMessage(res) {
     return res

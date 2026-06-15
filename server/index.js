@@ -47,8 +47,8 @@ app.use(
                 'https://wander-her-eight.vercel.app'
             ]
 
-            // Also allow any http://<ip>:5173 (useful when your PC gets a new LAN IP)
-            const ipViteDev = /^http:\/\/(?:\d{1,3}\.){3}\d{1,3}:5173$/
+            // Also allow any http://<ip>:5173-5179 (useful when your PC gets a new LAN IP or Vite dev port changes)
+            const ipViteDev = /^http:\/\/(?:\d{1,3}\.){3}\d{1,3}:517[3-9]$/
 
             if (allowed.includes(origin) || ipViteDev.test(origin)) {
                 return callback(null, true)
