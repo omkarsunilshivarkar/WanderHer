@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import { z } from 'zod'
 import { createClient } from '@libsql/client'
+import { seedItineraries } from './seedData.js'
 
 
 dotenv.config()
@@ -28,6 +29,50 @@ async function initDb() {
         created_at TEXT NOT NULL
       );
     `)
+
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS itineraries (
+        id TEXT PRIMARY KEY,
+        title TEXT NOT NULL,
+        destination TEXT NOT NULL,
+        author TEXT,
+        author_image TEXT,
+        duration TEXT NOT NULL,
+        difficulty TEXT,
+        safety_rating REAL,
+        description TEXT,
+        full_itinerary TEXT NOT NULL,
+        created_at TEXT NOT NULL,
+        user_id TEXT
+      );
+    `)
+
+    const checkItineraries = await db.execute('SELECT COUNT(*) as count FROM itineraries')
+    if (checkItineraries.rows[0].count === 0) {
+        console.log('Seeding itineraries database...')
+        for (const item of seedItineraries) {
+            await db.execute({
+                sql: `INSERT INTO itineraries (
+                    id, title, destination, author, author_image, duration, difficulty, safety_rating, description, full_itinerary, created_at, user_id
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                args: [
+                    item.id,
+                    item.title,
+                    item.destination,
+                    item.author,
+                    item.authorImage,
+                    item.duration,
+                    item.difficulty || 'Easy',
+                    item.safetyRating || 5.0,
+                    item.description,
+                    item.fullItinerary,
+                    new Date().toISOString(),
+                    null
+                ]
+            })
+        }
+        console.log('Seeding completed successfully.')
+    }
 }
 
 
@@ -62,6 +107,33 @@ app.use(express.json())
 
 const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-me'
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d'
+
+function capitalizeName(name) {
+    if (!name) return name
+    return name
+        .trim()
+        .split(/\s+/)
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ')
+}
+
+function formatDuration(duration) {
+    if (!duration) return ''
+    const trimmed = duration.trim()
+    if (/^\d+$/.test(trimmed)) {
+        return `${trimmed} Days`
+    }
+    const match = trimmed.match(/^(\d+)\s*(days|day)?$/i)
+    if (match) {
+        const num = match[1]
+        const unit = num === '1' ? 'Day' : 'Days'
+        return `${num} ${unit}`
+    }
+    return trimmed
+        .split(/\s+/)
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ')
+}
 
 const signupSchema = z.object({
     name: z.string().min(1).max(100).optional(),
@@ -117,10 +189,11 @@ app.post('/api/auth/signup', async (req, res) => {
     const id = `u_${Date.now()}_${Math.random().toString(16).slice(2)}`
     const passwordHash = await bcrypt.hash(password, 12)
     const createdAt = new Date().toISOString()
+    const formattedName = name ? capitalizeName(name) : null
 
     await db.execute({
         sql: 'INSERT INTO users (id, email, name, password_hash, created_at) VALUES (?, ?, ?, ?, ?)',
-        args: [id, email, name ?? null, passwordHash, createdAt]
+        args: [id, email, formattedName, passwordHash, createdAt]
     })
 
 
@@ -161,6 +234,148 @@ app.get('/api/auth/me', authMiddleware, async (req, res) => {
 
     if (!user) return res.status(404).json({ message: 'Not found' })
     res.json({ user })
+})
+
+
+// --- ITINERARY ROUTES ---
+
+app.get('/api/itineraries', async (req, res) => {
+    try {
+        const result = await db.execute('SELECT * FROM itineraries ORDER BY created_at DESC')
+        const itineraries = result.rows.map(row => ({
+            id: row.id,
+            title: row.title,
+            destination: row.destination,
+            author: row.author,
+            authorImage: row.author_image,
+            duration: row.duration,
+            difficulty: row.difficulty,
+            safetyRating: row.safety_rating,
+            description: row.description,
+            fullItinerary: row.full_itinerary,
+            createdAt: row.created_at,
+            userId: row.user_id,
+            _source: row.user_id ? 'user' : 'seed'
+        }))
+        res.json({ itineraries })
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ message: 'Failed to fetch itineraries' })
+    }
+})
+
+app.post('/api/itineraries', authMiddleware, async (req, res) => {
+    const schema = z.object({
+        destination: z.string().min(1),
+        title: z.string().min(1),
+        duration: z.string().min(1),
+        author: z.string().optional(),
+        description: z.string().optional(),
+        fullItinerary: z.string().min(1)
+    })
+
+    const parsed = schema.safeParse(req.body)
+    if (!parsed.success) {
+        return res.status(400).json({ message: 'Invalid input', issues: parsed.error.issues })
+    }
+
+    const { destination, title, duration, author, description, fullItinerary } = parsed.data
+    const id = `it_${Date.now()}_${Math.random().toString(16).slice(2)}`
+    const createdAt = new Date().toISOString()
+    
+    const formattedDestination = capitalizeName(destination)
+    const formattedTitle = capitalizeName(title)
+    const formattedDuration = formatDuration(duration)
+    const formattedDescription = description ? capitalizeName(description) : 'A user shared itinerary'
+
+    let finalAuthor = author ? capitalizeName(author) : 'Anonymous'
+    if (!author && req.userId) {
+        try {
+            const userResult = await db.execute({
+                sql: 'SELECT name FROM users WHERE id = ?',
+                args: [req.userId]
+            })
+            if (userResult.rows[0]?.name) {
+                finalAuthor = capitalizeName(userResult.rows[0].name)
+            }
+        } catch (err) {
+            console.error('Error fetching user name:', err)
+        }
+    }
+
+    try {
+        await db.execute({
+            sql: `INSERT INTO itineraries (
+                id, title, destination, author, author_image, duration, difficulty, safety_rating, description, full_itinerary, created_at, user_id
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            args: [
+                id,
+                formattedTitle,
+                formattedDestination,
+                finalAuthor,
+                '👩‍💻',
+                formattedDuration,
+                'Easy',
+                5.0,
+                formattedDescription,
+                fullItinerary,
+                createdAt,
+                req.userId
+            ]
+        })
+
+        res.status(201).json({
+            message: 'Itinerary shared successfully',
+            itinerary: {
+                id,
+                title: formattedTitle,
+                destination: formattedDestination,
+                author: finalAuthor,
+                authorImage: '👩‍💻',
+                duration: formattedDuration,
+                difficulty: 'Easy',
+                safetyRating: 5.0,
+                description: formattedDescription,
+                fullItinerary,
+                createdAt,
+                userId: req.userId,
+                _source: 'user'
+            }
+        })
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ message: 'Failed to create itinerary' })
+    }
+})
+
+app.delete('/api/itineraries/:id', authMiddleware, async (req, res) => {
+    const { id } = req.params
+    try {
+        const result = await db.execute({
+            sql: 'SELECT user_id FROM itineraries WHERE id = ?',
+            args: [id]
+        })
+        const row = result.rows[0]
+        if (!row) {
+            return res.status(404).json({ message: 'Itinerary not found' })
+        }
+        if (row.user_id === null) {
+            return res.status(403).json({ message: 'Seed itineraries cannot be deleted' })
+        }
+        if (row.user_id !== req.userId) {
+            return res.status(403).json({ message: 'You do not have permission to delete this itinerary' })
+        }
+
+        await db.execute({
+            sql: 'DELETE FROM itineraries WHERE id = ?',
+            args: [id]
+        })
+
+        res.json({ message: 'Itinerary deleted successfully' })
+    } catch (err) {
+        console.error(err)
+        res.status(500).json({ message: 'Failed to delete itinerary' })
+    }
 })
 
 
