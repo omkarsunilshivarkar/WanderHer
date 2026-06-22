@@ -32,6 +32,12 @@
 ### 5. Essential Safety Tips
 ![Essential Safety Tips](./screenshots/safety_tips.png)
 
+### 6. Travel Tips
+![Travel Tips](./screenshots/travel_tips.png)
+
+### 7. Emergency Contacts & Tips
+![Emergency Contacts & Tips](./screenshots/emergency_tips.png)
+
 ---
 
 ## 🛠️ Tech Stack
