@@ -9,3 +9,10 @@ yarn-error.log*
 .env
 .env.*
 !.env.example
+
+# Database files
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
