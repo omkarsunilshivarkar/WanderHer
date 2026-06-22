@@ -15,6 +15,25 @@
 
 ---
 
+## 📸 Screenshots
+
+### 1. Home / Hero Section
+![Hero Section](./screenshots/hero.png)
+
+### 2. AI Trip Planner
+![AI Trip Planner](./screenshots/ai_planner.png)
+
+### 3. Community Itineraries
+![Community Itineraries](./screenshots/itineraries.png)
+
+### 4. Travel Safety Checklist
+![Travel Safety Checklist](./screenshots/checklist.png)
+
+### 5. Essential Safety Tips
+![Essential Safety Tips](./screenshots/safety_tips.png)
+
+---
+
 ## 🛠️ Tech Stack
 
 ### Frontend
@@ -104,6 +123,7 @@ To run the application locally on your machine, follow the steps below to config
 
 ```text
 wanderHer/
+├── screenshots/              # Application UI screenshots
 ├── server/                   # Express Backend
 │   ├── prisma/               # Prisma migrations and schema (if configured)
 │   ├── .env.example          # Template for backend secrets
