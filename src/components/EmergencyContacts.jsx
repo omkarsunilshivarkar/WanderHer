@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { nationalHelplines, stateHelplines, safetyApps } from '../data/helplines'
+import { AlertTriangle, Phone, ShieldAlert, MapPin, Smartphone, Map, Users, AlertCircle } from 'lucide-react'
 import '../styles/EmergencyContacts.css'
 
 function EmergencyContacts() {
@@ -22,6 +23,18 @@ function EmergencyContacts() {
     goa: 'Goa'
   }
 
+  const getAppIcon = (iconName) => {
+    switch (iconName) {
+      case '🚨': return <ShieldAlert size={20} className="app-icon-svg" />
+      case '📍': return <MapPin size={20} className="app-icon-svg" />
+      case '📱': return <Smartphone size={20} className="app-icon-svg" />
+      case '🗺️': return <Map size={20} className="app-icon-svg" />
+      case '👥': return <Users size={20} className="app-icon-svg" />
+      case '🆘': return <AlertCircle size={20} className="app-icon-svg" />
+      default: return <span>{iconName}</span>
+    }
+  }
+
   return (
     <div className="emergency-contacts">
       {/* Header Section */}
@@ -34,7 +47,9 @@ function EmergencyContacts() {
       {/* Danger Alert Section */}
       <section className="danger-alert">
         <div className="danger-left-section">
-          <div className="danger-icon">⚠️</div>
+          <div className="danger-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <AlertTriangle size={28} style={{ color: '#ef4444' }} />
+          </div>
           <div className="danger-content">
             <h2>In Immediate Danger?</h2>
             <p>India's unified emergency number</p>
@@ -42,8 +57,8 @@ function EmergencyContacts() {
         </div>
         <div className="danger-right-section">
           <div className="danger-number">112</div>
-          <a href="tel:112" className="danger-btn-call">
-            <span>☎️</span>
+          <a href="tel:112" className="danger-btn-call" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Phone size={24} />
           </a>
         </div>
       </section>
@@ -67,8 +82,9 @@ function EmergencyContacts() {
                   href={`tel:${helpline.number}`}
                   className="helpline-call-btn-grid"
                   title={`Call ${helpline.number}`}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
-                  <span className="call-icon">☎️</span>
+                  <Phone size={16} />
                 </a>
               </div>
             </div>
@@ -107,8 +123,9 @@ function EmergencyContacts() {
                   href={`tel:${helpline.number}`}
                   className="helpline-call-btn-grid"
                   title={`Call ${helpline.number}`}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
-                  <span className="call-icon">☎️</span>
+                  <Phone size={16} />
                 </a>
               </div>
             </div>
@@ -129,7 +146,9 @@ function EmergencyContacts() {
                 </div>
               </div>
               <div className="app-platforms">
-                <div className="app-icon">{app.icon}</div>
+                <div className="app-icon" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {getAppIcon(app.icon)}
+                </div>
               </div>
             </div>
           ))}

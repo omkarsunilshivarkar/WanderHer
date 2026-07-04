@@ -148,14 +148,16 @@
 
 
 
-/* .login-primary-btn,
+/* 
+.login-primary-btn,
 .login-primary-btn span,
 .login-primary-btn button,
 .login-primary-btn * {
-    /* color: #ffffff !important; */
+    color: #ffffff !important;
+}
+*/ 
 
-
-*/ .primary-btn:disabled {
+.primary-btn:disabled {
     opacity: 0.65;
 }
 

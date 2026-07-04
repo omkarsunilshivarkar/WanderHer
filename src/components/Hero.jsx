@@ -19,6 +19,21 @@ export default function Hero() {
               View Itineraries
             </a>
           </div>
+
+          <div className="hero-stats">
+            <div className="stat-card">
+              <span className="stat-number">10k+</span>
+              <span className="stat-label">Verified Destinies</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-number">24/7</span>
+              <span className="stat-label">SOS Safety Network</span>
+            </div>
+            <div className="stat-card">
+              <span className="stat-number">100%</span>
+              <span className="stat-label">Women-Focused</span>
+            </div>
+          </div>
         </div>
 
         <div className="hero-image-container">

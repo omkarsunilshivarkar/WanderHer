@@ -64,15 +64,26 @@
 
 .form-group input,
 .form-group select {
-    min-height: 42px;
-    padding: 0.58rem 0.9rem;
+    min-height: 48px;
+    padding: 0.65rem 1rem;
     border: 2px solid #e0d4c5;
-    border-radius: 8px;
-    font-size: 0.9rem;
+    border-radius: 10px;
+    font-size: 0.95rem;
     color: #1a3a52;
     background: white;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
     font-family: inherit;
+}
+
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23A9823A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    padding-right: 42px !important;
 }
 
 .form-group input:focus,
@@ -80,40 +91,40 @@
     outline: none;
     border-color: var(--planner-gold);
     background-color: white;
-    box-shadow: 0 0 0 3px rgba(169, 130, 58, 0.12);
+    box-shadow: 0 0 0 4px rgba(169, 130, 58, 0.15);
 }
 
 .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.25rem;
 }
 
 .interests-grid {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
 }
 
 .interest-tag {
-    min-height: 42px;
-    padding: 10px 16px;
+    min-height: 38px;
+    padding: 8px 18px;
     border: 2px solid #e0d4c5;
     background: white;
-    border-radius: 8px;
+    border-radius: 999px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     color: #1a3a52;
-    box-shadow: 0 2px 8px rgba(26, 58, 82, 0.06);
+    box-shadow: 0 2px 6px rgba(169, 130, 58, 0.02);
 }
 
 .interest-tag:hover {
     border-color: var(--planner-gold);
     color: var(--planner-gold-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(169, 130, 58, 0.15);
+    box-shadow: 0 4px 12px rgba(169, 130, 58, 0.1);
 }
 
 .interest-tag.active {
@@ -355,10 +366,6 @@
     .form-row {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
-
-    .interests-grid {
-        grid-template-columns: repeat(6, 1fr);
-    }
 }
 
 @media (max-width: 768px) {
@@ -373,10 +380,6 @@
 
     .form-row {
         grid-template-columns: 1fr;
-    }
-
-    .interests-grid {
-        grid-template-columns: repeat(4, 1fr);
     }
 
     .output-header {
@@ -418,7 +421,6 @@
     }
 
     .interests-grid {
-        grid-template-columns: repeat(2, 1fr);
         gap: 0.4rem;
     }
 
